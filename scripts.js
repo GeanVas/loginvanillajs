@@ -11,7 +11,13 @@ const validateUser = () => {
             'password': password
         })
     })
-    .then(res => res.json())
-    .then(window.location.href = 'home.html')
-    .catch(err => console.log('el error es', err));
+    .then(res => {
+        if (res.status === 200) {
+            window.location.href = 'home.html';
+        }
+        else {
+            alert('Usuario o contrasena incorrecta');
+        }
+    })
+    .catch(err => console.log(err));
 }
